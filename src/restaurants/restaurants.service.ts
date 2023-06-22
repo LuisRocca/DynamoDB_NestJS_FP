@@ -1,32 +1,31 @@
 import { Injectable } from '@nestjs/common';
 import { CreateRestaurantDto } from './dto/create-restaurant.dto';
 import { UpdateRestaurantDto } from './dto/update-restaurant.dto';
-import { Restaurant } from './entities/restaurant.entity';
-import { InjectModel, ReturnModel } from '@skypress/nestjs-dynamodb';
-
-// const ReturnModel = ReturnModel<Restaurant>()
+import { insertRestaurants } from 'src/db/restaurants/putRestaurants';
+import { getAllRestaurants } from 'src/db/restaurants/getRestaurants';
+import { v4 as uuidv4 } from 'uuid';
+import { getOneRestaurant } from 'src/db/restaurants/getRestaurant';
 
 @Injectable()
 export class RestaurantsService {
   constructor(
-    // @InjectModel(Restaurant)
-    // private readonly restaurantsModel: typeof ReturnModel,
   ) {}
   
-  create(createRestaurantDto: CreateRestaurantDto) {
-    return 'This action adds a new restaurant';
+  async create(createRestaurantDto: CreateRestaurantDto) {
+    const uniqueId = uuidv4();
+    return await insertRestaurants(createRestaurantDto, uniqueId);
   }
 
   async findAll() {
-    return'this.restaurantsModel.arguments';
+    return await getAllRestaurants();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} restaurant`;
+  async findOne(id: string) {
+    return await getOneRestaurant(id) ;
   }
 
-  update(id: number, updateRestaurantDto: UpdateRestaurantDto) {
-    return `This action updates a #${id} restaurant`;
+  async update(id: number, updateRestaurantDto: UpdateRestaurantDto) {
+    return await insertRestaurants(updateRestaurantDto, id);
   }
 
   remove(id: number) {

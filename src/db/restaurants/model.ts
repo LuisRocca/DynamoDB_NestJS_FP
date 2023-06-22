@@ -4,7 +4,7 @@ export async function createRestaurantTable(dynamoDB: DynamoDB): Promise<void> {
   const restaurantTableParams: DynamoDB.Types.CreateTableInput = {
     TableName: 'restaurant',
     AttributeDefinitions: [
-      { AttributeName: 'id', AttributeType: 'N' },
+      { AttributeName: 'id', AttributeType: 'S' },
     ],
     KeySchema: [
       { AttributeName: 'id', KeyType: 'HASH' },
