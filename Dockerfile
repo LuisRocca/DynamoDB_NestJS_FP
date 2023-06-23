@@ -14,7 +14,7 @@ RUN npm install
 COPY . .
 
 # Expone el puerto en el que se ejecutará tu microservicio
-EXPOSE 3001
+EXPOSE 3000
 
 # Comando para iniciar tu microservicio
 CMD [ "npm", "start" ]

@@ -105,7 +105,7 @@ Con estos pasos, deberías poder empaquetar tu microservicio en un contenedor Do
 
 quizás sea conveniente especificar que si quieren conectar la imagen de microservidor con la dynamoDB es necesario inyectarle las variables de entorno a la imagen :
 ```cmd
- docker run --env-file=./.env -p 3001:3001 mymicroservice
+ docker run --env-file=./.env -p 3000:3000 mymicroservice
  ```
  de esta manera ya queda todo en orden a la hora de correr el servicio en una imagen
 
