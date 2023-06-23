@@ -6,9 +6,9 @@ import { ValidationPipe } from '@nestjs/common';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   const config = new DocumentBuilder()
-    .addBearerAuth()
-    .setTitle('Documentacion del API manejos de bebidas')
-    .setDescription('Guia de peticiones para el uso del API para el consumo del servicio de bebidas del app Cocktals.app')
+    .addBearerAuth() // <-- icono bearer Token JWT
+    .setTitle('Documentacion del API Recomendaciones de Platillos y restaurantes')
+    .setDescription('El objetivo de esta api es armar un pequeño servicio donde las personas puedan ingresar ingredientes que le provoquen comer el dia de hoy y este le de una guia de recetas para que el usuario las prepare o de lo contrario si gusta puede buscar restaurantes que venden estos platillos que este dentro de nuestra sociedad de restaurantes asociados al proyecto ')
     .setVersion('1.0')
     .addTag('recipes')
     .addTag('restaurants')

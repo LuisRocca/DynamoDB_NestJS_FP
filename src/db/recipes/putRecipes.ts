@@ -1,6 +1,6 @@
 import { DynamoDB } from 'aws-sdk';
 import { dynamoDB } from '../client'
-export async function insertRecipes(createRecipeDto, uniqueId): Promise<void> {
+export async function insertRecipes(createRecipeDto, uniqueId): Promise<boolean> {
   
   const {name,ingredients} = createRecipeDto
   const params: DynamoDB.DocumentClient.PutItemInput = {
@@ -14,8 +14,9 @@ export async function insertRecipes(createRecipeDto, uniqueId): Promise<void> {
 
   try {
     await dynamoDB.put(params).promise();
-    console.log('Datos insertados correctamente');
+    return true
   } catch (error) {
     console.error('Error al insertar datos:', error);
+    return false
   }
 }

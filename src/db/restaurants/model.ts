@@ -19,6 +19,10 @@ export async function createRestaurantTable(dynamoDB: DynamoDB): Promise<void> {
     await dynamoDB.createTable(restaurantTableParams).promise();
     console.log('Tabla restaurantTable creada correctamente');
   } catch (error) {
+    if (error.statusCode === 400) {
+      // console.log('tabla ya existente', error)
+      return 
+    }
     console.error('Error al crear la tabla restaurantTable:', error);
   }
 }

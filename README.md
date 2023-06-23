@@ -108,3 +108,5 @@ quizás sea conveniente especificar que si quieren conectar la imagen de microse
  docker run --env-file=./.env -p 3001:3001 mymicroservice
  ```
  de esta manera ya queda todo en orden a la hora de correr el servicio en una imagen
+
+ tambien dejare por aca un enlace de una web gneradora de uuid por si quieres ver en accion las validaciones despues de paras por los pipes <a href="https://www.uuidgenerator.net" target="_blank">UUIDGenerator</a>

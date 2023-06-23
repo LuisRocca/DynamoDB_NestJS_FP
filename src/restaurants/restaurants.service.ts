@@ -33,7 +33,7 @@ export class RestaurantsService {
     return await getRestaurantsByrecipes(id)
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} restaurant`;
+  remove(id: string) {
+    return false;
   }
 }

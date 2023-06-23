@@ -19,6 +19,10 @@ export async function createRecipeTable(dynamoDB: DynamoDB): Promise<void> {
     await dynamoDB.createTable(RecipeTableParams).promise();
     console.log('Tabla RecipeTable creada correctamente');
   } catch (error) {
+    if (error.statusCode === 400) {
+      // console.log('db ya existe', error)
+      return 
+    }
     console.error('Error al crear la tabla RecipeTable:', error);
   }
 }

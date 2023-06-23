@@ -1,8 +1,8 @@
 # Define la imagen base
-FROM node:14
+FROM node:16
 
 # Establece el directorio de trabajo dentro del contenedor
-WORKDIR /the_cocktail_beverage
+WORKDIR /recipes_restaurants
 
 # Copia el archivo package.json y package-lock.json (si existe)
 COPY package*.json ./

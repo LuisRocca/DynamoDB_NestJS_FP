@@ -8,7 +8,7 @@ export async function getRecipesByIngredient(ingredients: string): Promise<any[]
         '#ingredients': 'ingredients',
       },
       ExpressionAttributeValues: {
-        ':ingredients': ingredients, // Ingrediente especificado por el usuario
+        ':ingredients': ingredients, 
       },
     };
     

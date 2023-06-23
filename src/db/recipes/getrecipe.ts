@@ -9,7 +9,6 @@ export async function getOneRecipe(uniqueId: string): Promise<any[]> {
         ':id': uniqueId,
       },
     };
-  
     try {
       const result = await dynamoDB.query(params).promise();
       return result.Items || [];
