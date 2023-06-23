@@ -1,11 +1,5 @@
 import { DynamoDB } from 'aws-sdk';
-require('dotenv').config();
-
-const dynamoDB = new DynamoDB.DocumentClient({
-  region: 'us-west-2',
-  accessKeyId: process.env.ACCESSKEYID,
-  secretAccessKey: process.env.SECRETACCESSKEY,
-});
+import { dynamoDB } from '../client'
 export async function getRecipesByIngredient(ingredients: string): Promise<any[]> {
     const params: DynamoDB.DocumentClient.ScanInput = {
       TableName: 'recipe',
@@ -17,7 +11,7 @@ export async function getRecipesByIngredient(ingredients: string): Promise<any[]
         ':ingredients': ingredients, // Ingrediente especificado por el usuario
       },
     };
-    console.log('estre')
+    
     try {
       const result = await dynamoDB.scan(params).promise();
       return result.Items || [];

@@ -3,8 +3,9 @@ import { CreateRestaurantDto } from './dto/create-restaurant.dto';
 import { UpdateRestaurantDto } from './dto/update-restaurant.dto';
 import { insertRestaurants } from 'src/db/restaurants/putRestaurants';
 import { getAllRestaurants } from 'src/db/restaurants/getRestaurants';
-import { v4 as uuidv4 } from 'uuid';
 import { getOneRestaurant } from 'src/db/restaurants/getRestaurant';
+import { getRestaurantsByrecipes } from 'src/db/restaurants/getRestaurantsByrecipes';
+import { v4 as uuidv4 } from 'uuid';
 
 @Injectable()
 export class RestaurantsService {
@@ -24,8 +25,12 @@ export class RestaurantsService {
     return await getOneRestaurant(id) ;
   }
 
-  async update(id: number, updateRestaurantDto: UpdateRestaurantDto) {
+  async update(id: string, updateRestaurantDto: UpdateRestaurantDto) {
     return await insertRestaurants(updateRestaurantDto, id);
+  }
+
+  async findRestaurantsByRecipe(id: string) {
+    return await getRestaurantsByrecipes(id)
   }
 
   remove(id: number) {

@@ -34,6 +34,9 @@ $ npm install
 
 ## Running the app
 
+antes de correr el proyecto es importante crearte un archivo .env con las variables de entorno que ves en el .env.example con colocar las credenciales de AWS basta para que el proyecto funcione de marabilla, cree las tablas necesarias y comiece a guardar datos en DynamoDB la cual es una Db NoSQL y parte es uno de los servicios AWS Faas asi que no necesitas instalar nada mas para poder correr la aplicacion. ya creado tu archivo .env puedes continuar con los siguentes pasos: 
+
+
 ```bash
 # development
 $ npm run start
@@ -71,3 +74,37 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 ## License
 
 Nest is [MIT licensed](LICENSE).
+
+## Rutas y Peticiones
+
+si necesitas una guia <a href="https://documenter.getpostman.com/view/17303259/2s93z5AjxH" target="_blank">aqui esta la Doc de rutas en Postman</a> de lo contrario si estas corriendo el proyecto en tu entorno de desarrollo puedes ingresar al localhost a esta ruta para tener una gua detallada de las rutas http://localhost:3000/docs y de esta manera hacerte la idea de como funciona el proyecto. 
+
+## Imagen del microservidor 
+
+Abre una terminal en la raíz del proyecto y ejecuta el siguiente comando para construir la imagen de Docker:
+bash
+
+```cmd
+docker build -t mymicroservice .
+```
+
+Esto creará una imagen de Docker llamada mymicroservice basada en las instrucciones del Dockerfile. Asegúrate de incluir el punto . al final del comando para especificar que el Dockerfile se encuentra en el directorio actual.
+
+Una vez que se haya creado la imagen de Docker, puedes ejecutar un contenedor basado en esa imagen con el siguiente comando:
+bash
+
+```cmd
+docker run -p 3000:3000 mymicroservice
+```
+
+Esto ejecutará un contenedor a partir de la imagen mymicroservice y mapeará el puerto 3000 del contenedor al puerto 3000 de tu máquina local. Puedes cambiar el número de puerto si tu microservicio utiliza un puerto diferente.
+
+Con estos pasos, deberías poder empaquetar tu microservicio en un contenedor Docker y ejecutarlo en cualquier entorno compatible con Docker.
+
+## Notas Adicional
+
+quizás sea conveniente especificar que si quieren conectar la imagen de microservidor con la dynamoDB es necesario inyectarle las variables de entorno a la imagen :
+```cmd
+ docker run --env-file=./.env -p 3001:3001 mymicroservice
+ ```
+ de esta manera ya queda todo en orden a la hora de correr el servicio en una imagen

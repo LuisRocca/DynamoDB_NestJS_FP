@@ -1,11 +1,6 @@
 import { DynamoDB } from 'aws-sdk';
-require('dotenv').config();
+import { dynamoDB } from '../client'
 
-const dynamoDB = new DynamoDB.DocumentClient({
-  region: 'us-west-2',
-  accessKeyId: process.env.ACCESSKEYID,
-  secretAccessKey: process.env.SECRETACCESSKEY,
-});
 export async function getOneRestaurant(uniqueId: string): Promise<any[]> {
     const params: DynamoDB.DocumentClient.QueryInput = {
       TableName: 'restaurant',

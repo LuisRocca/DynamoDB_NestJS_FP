@@ -1,12 +1,7 @@
 import { DynamoDB } from 'aws-sdk';
-require('dotenv').config();
-
+import { dynamoDB } from '../client'
 export async function insertRecipes(createRecipeDto, uniqueId): Promise<void> {
-  const dynamoDB = new DynamoDB.DocumentClient({
-    region: 'us-west-2',
-    accessKeyId: process.env.ACCESSKEYID,
-    secretAccessKey: process.env.SECRETACCESSKEY,
-  });
+  
   const {name,ingredients} = createRecipeDto
   const params: DynamoDB.DocumentClient.PutItemInput = {
     TableName: 'recipe',

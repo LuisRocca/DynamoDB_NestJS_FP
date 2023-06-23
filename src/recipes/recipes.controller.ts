@@ -37,7 +37,7 @@ export class RecipesController {
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.recipesService.remove(+id);
+    return this.recipesService.remove(id);
   }
 
 }

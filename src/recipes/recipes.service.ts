@@ -3,9 +3,9 @@ import { CreateRecipeDto } from './dto/create-recipe.dto';
 import { UpdateRecipeDto } from './dto/update-recipe.dto';
 import { insertRecipes } from 'src/db/recipes/putRecipes';
 import { getAllRecipes } from 'src/db/recipes/getRecipes';
+import { getOneRecipe } from 'src/db/recipes/getRecipe';
+import { deleteRecipe } from 'src/db/recipes/deleteRecipe';
 import { v4 as uuidv4 } from 'uuid';
-import { getOneRecipe } from 'src/db/recipes/getrecipe';
-// import { getAllRestaurants, getRestaurantsByrecipes } from 'src/db/restaurants/getRestaurants';
 
 @Injectable()
 export class RecipesService {
@@ -26,7 +26,6 @@ export class RecipesService {
     const {ingredients} = ingredientsRecipeDto
     const allRecipes =await getAllRecipes()
     const filteredRecipes = allRecipes.filter(recipe => recipe.ingredients.some(ingredient => ingredients.includes(ingredient)));
-    // await getRestaurantsByrecipes("0d2f27d5-bf0c-449b-9007-2fb7360c5b19")
     return filteredRecipes
   }
 
@@ -34,7 +33,7 @@ export class RecipesService {
     return await insertRecipes(updateRecipeDto, id);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} recipe`;
+  async remove(id: string) {
+    return await deleteRecipe(id);
   }
 }
